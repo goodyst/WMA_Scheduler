@@ -1,0 +1,58 @@
+﻿install-package microsoft.entityframeworkcore.sqlserver
+ get-help entityframework
+
+                     _/\__
+               ---==/    \\
+         ___  ___   |.    \|\
+        | __|| __|  |  )   \\\
+        | _| | _|   \_/ |  //|\\
+        |___||_|       /   \\\/\\
+
+TOPIC
+    about_EntityFrameworkCore
+
+SHORT DESCRIPTION
+    Provides information about the Entity Framework Core Package Manager Console Tools.
+
+LONG DESCRIPTION
+    This topic describes the Entity Framework Core Package Manager Console Tools. See https://docs.efproject.net for
+    information on Entity Framework Core.
+
+    The following Entity Framework Core commands are available.
+
+        Cmdlet                      Description
+        --------------------------  ---------------------------------------------------
+        Add-Migration               Adds a new migration.
+
+        Drop-Database               Drops the database.
+
+        Remove-Migration            Removes the last migration.
+
+        Scaffold-DbContext          Scaffolds a DbContext and entity types for a database.
+
+        Script-Migration            Generates a SQL script from migrations.
+
+        Update-Database             Updates the database to a specified migration.
+
+SEE ALSO
+    Add-Migration
+    Drop-Database
+    Remove-Migration
+    Scaffold-DbContext
+    Script-Migration
+    Update-Database
+
+PM> Update-Database class_abstraction
+Done.
+PM> add-migration class_abstraction2
+Build failed.
+PM> add-migration class_abstraction2
+An operation was scaffolded that may result in the loss of data. Please review the migration for accuracy.
+To undo this action, use Remove-Migration.
+PM> Update-Database class_abstraction2
+Done.
+PM> add-migration class_abstraction3
+To undo this action, use Remove-Migration.
+PM> Update-Database class_abstraction3
+Done.
+PM> 

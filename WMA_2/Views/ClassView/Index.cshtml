@@ -1,0 +1,52 @@
+@using WMA_2.Models
+
+@model IEnumerable<WMA_2.Models.ClassView>
+
+    @{
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+                      <h2>List of Classes</h2>
+
+                      <p>
+                          <a asp-action="Create">Create New Class Time</a>
+                      </p>
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Class)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.ClassTimes)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Constraints)
+                                  </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @{ 
+                                  foreach (var cl in Model) {
+                                      
+                                        <tr><td>@cl.Class.ClassId - @cl.Class.Description</td>
+                              <td>
+                                  @foreach(var tm in cl.Class.Class_Times )
+                                  {
+                                      @tm<br>
+                                  }
+                              </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@cl.Class.ClassId">Edit</a> |
+                                                <a asp-action="Details" asp-route-id="@cl.Class.ClassId">Details</a> |
+                                                <a asp-action="Delete" asp-route-id="@cl.Class.ClassId">Delete</a>
+                                            </td>
+
+                              </tr>
+                                    }
+                              }
+                          </tbody>
+                      </table>

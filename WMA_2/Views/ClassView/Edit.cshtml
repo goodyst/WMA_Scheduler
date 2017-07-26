@@ -1,0 +1,77 @@
+@using WMA_2.Models
+@model WMA_2.Models.ClassView
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+<form asp-action="Edit">
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Class Name</label>
+        <div class="col-md-10">
+            <input id="txtClassId" type="hidden" value="@Model.Class.ClassId" />
+            <input asp-for="Class.Description" class="form-control" />
+            <span asp-validation-for="Class.Description" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="container">
+    @{
+        <div id="class_list">
+            <div class="row">
+                <div class="col-md-5">class times</div><div class="col-md-2">location</div>
+            </div>
+
+
+            @foreach (var tm in @Model.Class.Full_Class_Time_Info)
+            {
+                <div class="row">
+                    <div class="col-md-5" data-state="edit">
+                        <div class="row">
+                            <div class="currentTime col-md-5" id="divCurTime_@tm.Id"
+                                 data-id="@tm.Id"
+                                 data-classtime_id="@tm.ClassTimeId"
+                                 data-class_id="@tm.ClassId"
+                                 data-orig_tm="@tm.ClassTimeId">@Model.Class.Class_Times.Where(ct=>ct.Id == tm.ClassTimeId).First()</div>
+                            <div class="col-md-1"><a href="javascript:void(0)" onclick="classview_edit_edit(this);">edit</a></div>
+                            <div class="col-md-1"><a href="javascript:void(0)" onclick="removeClass(this);">remove</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-5" data-state="edit">
+                        <div class="row">
+                           <div class="currentLoc col-md-5"
+                                data-id="@tm.Id"
+                                 data-classtime_id="@tm.ClassTimeId"
+                                 data-class_id="@tm.ClassId"
+                                 data-orig_loc="@tm.LocationId">
+                                 @Model.Location.Where(loc => loc.Id == tm.LocationId).First().Description</div>
+                           <div class="col-md-1"><a href="javascript:void(0)" onclick="classview_editlocation_edit(this);">edit</a></div>
+                           <div class="col-md-1"><a href="javascript:void(0)" onclick="removelocation(this);">remove</a></div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+       </div>
+            <p>
+                <a href="javascript:void(0)" onclick="addClass();">add another class</a>
+            </p>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" value="Save" class="btn btn-default" onclick="classview_edit_save()" />
+                    </div>
+                </div>
+
+
+        }
+
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        <script type="text/javascript" src="/js/wma_admin_classes.js"></script>
+    }

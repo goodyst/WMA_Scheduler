@@ -1,0 +1,14 @@
+@model System.Exception
+
+@{
+    ViewData["Title"] = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OOOPs Error</h2>
+
+here's the probably less than useful message that was obtained:<br /><br />
+@Model.Message
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h2>Admin Menu</h2>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><a asp-area="" asp-controller="ClassView" asp-action="Index">Class Schedules</a></li>
+        <li><a asp-area="" asp-controller="WMA_Class" asp-action="Index">Classes</a></li>
+        <li><a asp-area="" asp-controller="ClassTimes" asp-action="Index">Times</a></li>
+        <li><a asp-area="" asp-controller="WMA_Location" asp-action="Index">Location</a></li>
+        <li><a asp-area="" asp-controller="WMA_Constant" asp-action="Index">Constants</a></li>
+        <li><a asp-area="" asp-controller="WMA_Constant_Category" asp-action="Index">Constant Category</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+    </ul>
+</div>
+

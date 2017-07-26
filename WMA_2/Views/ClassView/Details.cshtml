@@ -1,0 +1,23 @@
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">@Model.Class.ClassId - @Model.Class.Description</div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">class times</div><div class="col-md-2">location</div>
+        @foreach (var tm in @Model.Class.Class_Times)
+                {
+            <div class="row">
+                <div class="col-md-5">
+                    @tm
+                </div><div class="col-md-2">location n/a yet</div>
+            </div>
+                }
+    </div>
+</div>

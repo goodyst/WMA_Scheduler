@@ -1,0 +1,48 @@
+@model WMA_2.Models.ClassView
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Setup a Class</h2>
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label asp-for="Class" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+
+                @Html.DropDownList("ddlClasses", Model.ClassList.Select(item => new SelectListItem
+           {
+               Value = item.ClassId.ToString(),
+               Text = item.Description
+           }))
+                <span asp-validation-for="Class" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ClassTimes" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                @Html.ListBoxFor(m => m.ClassTimeList,
+                new MultiSelectList(Model.ClassTimeList, "Id", "", null), new { @class = "lstTimes" })
+                <span asp-validation-for="ClassTimes" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Constraints" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <span asp-validation-for="Constraints" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
